@@ -1,0 +1,22 @@
+
+
+
+<table>
+    <tr >
+        <th>Name</th>
+        <th>Contact Number</th>
+        <th>Action</th>
+    </tr>
+
+        
+    <tr *ngFor="let contact of contacts">
+        <td>{{contact.name}}</td>
+        <td>{{contact.phoneNumber}}</td>
+        <button (click)="deleteContact(contact)">Delete Contact</button>
+    </tr>
+    <tr>
+        <th><input type="text" [(ngModel)]="newName" placeholder="name" ></th>
+        <th><input type="text" [(ngModel)]="newPhone" placeholder="contact number" ></th>
+        <th><button (click)="addContact()">AddContact</button></th>
+    </tr>
+</table>
