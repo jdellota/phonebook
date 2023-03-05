@@ -6,5 +6,5 @@ table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
   } 
-.deleteButton {width: 110px;}
-.addButton {width: 110px;}
+.deleteButton {width: 120px;}
+.addButton {width: 120px;}

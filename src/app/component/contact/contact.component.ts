@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Contact } from 'src/app/interface/contact';
+import { ContactServiceService } from 'src/app/services/contact-service.service';
 
 @Component({
   selector: 'app-contact',
@@ -8,19 +9,32 @@ import { Contact } from 'src/app/interface/contact';
 })
 export class ContactComponent {
   contacts:Contact[]=[];
+  
+  constructor(private contactService: ContactServiceService) { }
+
+  ngOnInit() {
+    this.contactService.getContacts().subscribe(contacts => {
+      this.contacts = contacts;
+    })
+  }
+
+
+
   newName:String=''
   newPhone:String='';
-  selectedContact?:Contact;
-  addContact(){
-    this.contacts.push({
-      name: this.newName,
-      phoneNumber: this.newPhone
-    })
-    this.newName='';
-    this.newPhone='';
-  }
+  //  
+  // addContact(){
+  //   this.contacts.push({
+  //     name: this.newName,
+  //     phoneNumber: this.newPhone
+  //   });
+  //   this.newName='';
+  //   this.newPhone='';
+  // }
+addContact(newName:String, newPhone:String){
+  this.contactService.addContact(newName, newPhone);
+}
   deleteContact(contact:Contact){
-    
     this.contacts.splice(this.contacts.indexOf(contact), 1)
   }
 
